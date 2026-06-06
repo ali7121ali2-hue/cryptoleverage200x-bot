@@ -58,4 +58,6 @@ def callback(call):
     bot.send_message(call.message.chat.id, text, reply_markup=main_menu())
 
 print("Bot Started...")
-bot.infinity_polling()
+
+if __name__ == "__main__":
+    bot.infinity_polling(skip_pending=True)
