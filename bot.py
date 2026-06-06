@@ -56,8 +56,20 @@ def callback(call):
 
     bot.answer_callback_query(call.id)
     bot.send_message(call.message.chat.id, text, reply_markup=main_menu())
+from flask import Flask
+import threading
 
-print("Bot Started...")
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Bot is running!"
+
+def run_bot():
+    bot.infinity_polling(skip_pending=True)
+
+threading.Thread(target=run_bot).start()
 
 if __name__ == "__main__":
-    bot.infinity_polling(skip_pending=True)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
