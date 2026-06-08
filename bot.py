@@ -125,9 +125,17 @@ bot.send_photo(
         message,
         "✅ تم استلام إثبات الدفع وسيتم مراجعته قريباً."
     )
+
 def run_bot():
     print("Bot Started...")
-    bot.infinity_polling(skip_pending=True)
+
+    while True:
+        try:
+            bot.infinity_polling(skip_pending=True, timeout=10, long_polling_timeout=5)
+        except Exception as e:
+            print("Polling error:", e)
+            import time
+            time.sleep(10)
 
 if __name__ == "__main__":
     threading.Thread(target=run_bot, daemon=True).start()
