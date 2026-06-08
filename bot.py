@@ -114,12 +114,11 @@ admin_buttons.add(
 )
 
 bot.send_photo(
-    ADMIN_ID,
-    photo,
-    caption=caption,
-    reply_markup=admin_buttons
-)
-    
+        ADMIN_ID,
+        photo,
+        caption=caption,
+        reply_markup=admin_buttons
+    )
 
     bot.reply_to(
         message,
