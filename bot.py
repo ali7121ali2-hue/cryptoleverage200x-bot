@@ -54,9 +54,14 @@ def callback(call):
     if call.data.startswith("approve_"):
         user_id = int(call.data.replace("approve_", ""))
 
+        invite = bot.create_chat_invite_link(
+            chat_id=VIP_CHANNEL,
+            member_limit=1
+        )
+
         bot.send_message(
             user_id,
-            "✅ تم قبول اشتراكك بنجاح.\n\n🔐 رابط قناة VIP:\nhttps://t.me/+Vj79gCEYPBBkM2Y0"
+            f"✅ تم قبول اشتراكك بنجاح.\n\n🔐 رابط دخول VIP الخاص بك:\n{invite.invite_link}\n\n⚠️ الرابط صالح لاستخدام واحد فقط."
         )
 
         bot.answer_callback_query(call.id, "تم قبول الاشتراك")
@@ -72,7 +77,7 @@ def callback(call):
 
         bot.answer_callback_query(call.id, "تم رفض الطلب")
         return
-    if call.data == "features":
+        if call.data == "features":
         text = "📊 مميزات القناة\n\n✅ توصيات صباحية ومسائية\n✅ سبوت وفيوتشر\n✅ قناة تعليمية\n✅ متابعة خاصة خطوة بخطوة\n\nللتواصل:\nhttps://t.me/ABBE_VIP2"
     elif call.data == "prices":
         text = "💎 أسعار الاشتراك\n\n🔹 اشتراك شهري = 30$\n🔹 شهرين = 60$\n🔹 3 أشهر = 80$\n🔹 سنوي = 200$"
