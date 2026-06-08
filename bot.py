@@ -120,11 +120,7 @@ bot.send_photo(
         reply_markup=admin_buttons
     )
 
-    bot.reply_to(
-        message,
-        "✅ تم استلام إثبات الدفع وسيتم مراجعته قريباً."
-    )
-
+    
 def run_bot():
     print("Bot Started...")
 
