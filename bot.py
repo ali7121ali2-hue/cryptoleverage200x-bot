@@ -21,7 +21,7 @@ def main_menu():
         types.InlineKeyboardButton("💎 أسعار الاشتراك", callback_data="prices"),
         types.InlineKeyboardButton("💳 الدفع", callback_data="payment"),
         types.InlineKeyboardButton("📈 نتائج التوصيات", callback_data="results"),
-        types.InlineKeyboardButton("🔐 قناة VIP", callback_data="vip"),
+        
         types.InlineKeyboardButton("📞 التواصل", callback_data="contact")
     )
     return markup
@@ -79,8 +79,7 @@ def callback(call):
         text = "💰 الدفع عبر USDT\n\n🌐 الشبكة: TRC20\n\n📍 عنوان المحفظة:\nTG8jzktMF9kR8hd6NDt3caiEbyXuoMpCqu\n\n📸 بعد التحويل أرسل صورة التحويل:\nhttps://t.me/ABBE_VIP2"
     elif call.data == "results":
         text = "📈 نتائج التوصيات:\n\nhttps://t.me/Crypto_Leveragee125X"
-    elif call.data == "vip":
-        text = "🔐 قناة VIP:\n\nhttps://t.me/+Vj79gCEYPBBkM2Y0"
+    
     else:
         text = "📞 التواصل:\n\nhttps://t.me/ABBE_VIP2"
 
