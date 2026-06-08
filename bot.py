@@ -50,6 +50,27 @@ https://t.me/ABBE_VIP2
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback(call):
+    if call.data.startswith("approve_"):
+        user_id = int(call.data.replace("approve_", ""))
+
+        bot.send_message(
+            user_id,
+            "✅ تم قبول اشتراكك بنجاح.\n\n🔐 رابط قناة VIP:\nhttps://t.me/+Vj79gCEYPBBkM2Y0"
+        )
+
+        bot.answer_callback_query(call.id, "تم قبول الاشتراك")
+        return
+
+    if call.data.startswith("reject_"):
+        user_id = int(call.data.replace("reject_", ""))
+
+        bot.send_message(
+            user_id,
+            "❌ تم رفض إثبات الدفع.\n\n📞 تواصل مع الدعم:\nhttps://t.me/ABBE_VIP2"
+        )
+
+        bot.answer_callback_query(call.id, "تم رفض الطلب")
+        return
     if call.data == "features":
         text = "📊 مميزات القناة\n\n✅ توصيات صباحية ومسائية\n✅ سبوت وفيوتشر\n✅ قناة تعليمية\n✅ متابعة خاصة خطوة بخطوة\n\nللتواصل:\nhttps://t.me/ABBE_VIP2"
     elif call.data == "prices":
@@ -86,11 +107,19 @@ def handle_payment_proof(message):
 
     photo = message.photo[-1].file_id
 
-    bot.send_photo(
-        ADMIN_ID,
-        photo,
-        caption=caption
-    )
+    admin_buttons = types.InlineKeyboardMarkup()
+admin_buttons.add(
+    types.InlineKeyboardButton("✅ قبول الاشتراك", callback_data=f"approve_{user_id}"),
+    types.InlineKeyboardButton("❌ رفض الدفع", callback_data=f"reject_{user_id}")
+)
+
+bot.send_photo(
+    ADMIN_ID,
+    photo,
+    caption=caption,
+    reply_markup=admin_buttons
+)
+    
 
     bot.reply_to(
         message,
