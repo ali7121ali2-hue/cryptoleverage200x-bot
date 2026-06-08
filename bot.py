@@ -78,20 +78,29 @@ def callback(call):
 
         bot.answer_callback_query(call.id, "تم رفض الطلب")
         return
-        if call.data == "features":
-        text = "📊 مميزات القناة\n\n✅ توصيات صباحية ومسائية\n✅ سبوت وفيوتشر\n✅ قناة تعليمية\n✅ متابعة خاصة خطوة بخطوة\n\nللتواصل:\nhttps://t.me/ABBE_VIP2"
+
+if call.data == "features":
+        text = "📊 مميزات القناة\n\n✅ توصيات صباحية ومسائية\n✅ سبوت وفيوتشر\n✅ قناة تعليمية\n✅ متابعة خاصة خطوة بخطوة"
+
     elif call.data == "prices":
-        text = "💎 أسعار الاشتراك\n\n🔹 اشتراك شهري = 30$\n🔹 شهرين = 60$\n🔹 3 أشهر = 80$\n🔹 سنوي = 200$"
+        text = "💎 أسعار الاشتراك\n\n💎 شهر = 30$\n💎 3 أشهر = 80$\n💎 سنوي = 200$"
+
     elif call.data == "payment":
-        text = "💰 الدفع عبر USDT\n\n🌐 الشبكة: TRC20\n\n📍 عنوان المحفظة:\nTG8jzktMF9kR8hd6NDt3caiEbyXuoMpCqu\n\n📸 بعد التحويل أرسل صورة التحويل:\nhttps://t.me/ABBE_VIP2"
+        text = "💰 الدفع عبر USDT\n\n🌐 الشبكة: TRC20"
+
     elif call.data == "results":
         text = "📈 نتائج التوصيات:\n\nhttps://t.me/Crypto_Leveragee125X"
-    
+
     else:
         text = "📞 التواصل:\n\nhttps://t.me/ABBE_VIP2"
 
     bot.answer_callback_query(call.id)
-    bot.send_message(call.message.chat.id, text, reply_markup=main_menu())
+
+    bot.send_message(
+        call.message.chat.id,
+        text,
+        reply_markup=main_menu()
+    )
 @bot.message_handler(content_types=['photo'])
 def handle_payment_proof(message):
 
