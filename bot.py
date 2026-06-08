@@ -56,6 +56,7 @@ def callback(call):
 
         invite = bot.create_chat_invite_link(
             chat_id=VIP_CHANNEL,
+            name=f"user_{user_id}",
             member_limit=1
         )
 
