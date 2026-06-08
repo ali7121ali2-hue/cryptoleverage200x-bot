@@ -108,18 +108,17 @@ def handle_payment_proof(message):
     photo = message.photo[-1].file_id
 
     admin_buttons = types.InlineKeyboardMarkup()
-admin_buttons.add(
-    types.InlineKeyboardButton("✅ قبول الاشتراك", callback_data=f"approve_{user_id}"),
-    types.InlineKeyboardButton("❌ رفض الدفع", callback_data=f"reject_{user_id}")
-)
+    admin_buttons.add(
+        types.InlineKeyboardButton("✅ قبول الاشتراك", callback_data=f"approve_{user_id}"),
+        types.InlineKeyboardButton("❌ رفض الدفع", callback_data=f"reject_{user_id}")
+    )
 
-bot.send_photo(
+    bot.send_photo(
         ADMIN_ID,
         photo,
         caption=caption,
         reply_markup=admin_buttons
     )
-
     
 def run_bot():
     print("Bot Started...")
