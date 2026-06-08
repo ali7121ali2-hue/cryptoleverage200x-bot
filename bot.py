@@ -5,6 +5,7 @@ import telebot
 from telebot import types
 
 TOKEN = os.getenv("BOT_TOKEN")
+ADMIN_ID = int(os.getenv("ADMIN_ID"))
 bot = telebot.TeleBot(TOKEN)
 
 app = Flask(__name__)
@@ -64,7 +65,37 @@ def callback(call):
 
     bot.answer_callback_query(call.id)
     bot.send_message(call.message.chat.id, text, reply_markup=main_menu())
+@bot.message_handler(content_types=['photo'])
+def handle_payment_proof(message):
 
+    user_name = message.from_user.first_name
+
+    username = message.from_user.username
+
+    user_id = message.from_user.id
+
+    caption = f"""
+📥 إثبات دفع جديد
+
+👤 الاسم: {user_name}
+
+📱 اليوزر: @{username}
+
+🆔 الآيدي: {user_id}
+"""
+
+    photo = message.photo[-1].file_id
+
+    bot.send_photo(
+        ADMIN_ID,
+        photo,
+        caption=caption
+    )
+
+    bot.reply_to(
+        message,
+        "✅ تم استلام إثبات الدفع وسيتم مراجعته قريباً."
+    )
 def run_bot():
     print("Bot Started...")
     bot.infinity_polling(skip_pending=True)
