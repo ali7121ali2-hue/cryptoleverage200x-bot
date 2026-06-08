@@ -79,17 +79,17 @@ def callback(call):
         bot.answer_callback_query(call.id, "تم رفض الطلب")
         return
 
-if call.data == "features":
-        text = "📊 مميزات القناة\n\n✅ توصيات صباحية ومسائية\n✅ سبوت وفيوتشر\n✅ قناة تعليمية\n✅ متابعة خاصة خطوة بخطوة"
+    if call.data == "features":
+        text = "📊 مميزات القناة"
 
     elif call.data == "prices":
-        text = "💎 أسعار الاشتراك\n\n💎 شهر = 30$\n💎 3 أشهر = 80$\n💎 سنوي = 200$"
+        text = "💎 أسعار الاشتراك"
 
     elif call.data == "payment":
-        text = "💰 الدفع عبر USDT\n\n🌐 الشبكة: TRC20"
+        text = "💰 الدفع عبر USDT"
 
     elif call.data == "results":
-        text = "📈 نتائج التوصيات:\n\nhttps://t.me/Crypto_Leveragee125X"
+        text = "📈 نتائج التوصيات"
 
     else:
         text = "📞 التواصل:\n\nhttps://t.me/ABBE_VIP2"
@@ -101,6 +101,8 @@ if call.data == "features":
         text,
         reply_markup=main_menu()
     )
+
+    
 @bot.message_handler(content_types=['photo'])
 def handle_payment_proof(message):
 
