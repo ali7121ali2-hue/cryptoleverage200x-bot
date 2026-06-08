@@ -6,8 +6,9 @@ from telebot import types
 
 TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_ID = int(os.getenv("ADMIN_ID"))
-bot = telebot.TeleBot(TOKEN)
+VIP_CHANNEL = int(os.getenv("VIP_CHANNEL"))
 
+bot = telebot.TeleBot(TOKEN)
 app = Flask(__name__)
 
 @app.route("/")
