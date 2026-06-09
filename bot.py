@@ -98,9 +98,12 @@ def callback(call):
 """
 
     elif call.data == "payment":
-        text = """💰 الدفع عبر USDT
+    text = """💰 الدفع عبر USDT
 
 🌐 الشبكة: TRC20
+
+📍 عنوان المحفظة:
+TG8jzktMF9kR8hd6NDt3caiEbyXuoMpCqu
 
 📩 أرسل صورة إثبات الدفع
 وسيتم مراجعتها من الإدارة
