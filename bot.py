@@ -80,28 +80,53 @@ def callback(call):
         return
 
     if call.data == "features":
-        text = "📊 مميزات القناة"
+    text = """📊 مميزات القناة
 
-    elif call.data == "prices":
-        text = "💎 أسعار الاشتراك"
+✅ توصيات يومية احترافية
+✅ توصيات سبوت وفيوتشر
+✅ متابعة خطوة بخطوة
+✅ إدارة رأس المال
+✅ دعم فني ومساعدة
+"""
 
-    elif call.data == "payment":
-        text = "💰 الدفع عبر USDT"
+elif call.data == "prices":
+    text = """💎 أسعار الاشتراك
 
-    elif call.data == "results":
-        text = "📈 نتائج التوصيات"
+💠 شهر = 30$
 
-    else:
-        text = "📞 التواصل:\n\nhttps://t.me/ABBE_VIP2"
+💠 3 أشهر = 80$
 
-    bot.answer_callback_query(call.id)
+💠 سنة = 200$
+"""
 
-    bot.send_message(
-        call.message.chat.id,
-        text,
-        reply_markup=main_menu()
-    )
+elif call.data == "payment":
+    text = """💰 الدفع عبر USDT
 
+🌐 الشبكة: TRC20
+
+📩 أرسل صورة إثبات الدفع
+وسيتم مراجعتها من الإدارة
+"""
+
+elif call.data == "results":
+    text = """📈 نتائج التوصيات
+
+https://t.me/Crypto_Leverage200X
+"""
+
+else:
+    text = """📞 التواصل
+
+https://t.me/ABBE_VIP2
+"""
+
+bot.answer_callback_query(call.id)
+
+bot.send_message(
+    call.message.chat.id,
+    text,
+    reply_markup=main_menu()
+)
     
 @bot.message_handler(content_types=['photo'])
 def handle_payment_proof(message):
