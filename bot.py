@@ -135,14 +135,16 @@ def handle_payment_proof(message):
 
     user_id = message.from_user.id
 
-    caption = f"""
-📥 إثبات دفع جديد
+    caption = f"""📥 إثبات دفع جديد
 
 👤 الاسم: {user_name}
 
 📱 اليوزر: @{username}
 
-🆔 الآيديInlineKeyboardMarkup photo = message.photo[-1].file_id
+🆔 الآيدي: {user_id}
+"""
+
+    photo = message.photo[-1].file_id
 
     admin_buttons = types.InlineKeyboardMarkup()
     admin_buttons.add(
