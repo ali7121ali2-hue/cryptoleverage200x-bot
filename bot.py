@@ -78,7 +78,8 @@ def callback(call):
 
         bot.answer_callback_query(call.id, "تم رفض الطلب")
         return
-      if call.data == "features":
+
+    if call.data == "features":
         text = """📊 مميزات القناة
 
 ✅ توصيات يومية احترافية
@@ -92,9 +93,7 @@ def callback(call):
         text = """💎 أسعار الاشتراك
 
 💠 شهر = 30$
-
 💠 3 أشهر = 80$
-
 💠 سنة = 200$
 """
 
@@ -126,7 +125,7 @@ https://t.me/ABBE_VIP2
         text,
         reply_markup=main_menu()
     )
-    
+   
 @bot.message_handler(content_types=['photo'])
 def handle_payment_proof(message):
 
@@ -143,10 +142,7 @@ def handle_payment_proof(message):
 
 📱 اليوزر: @{username}
 
-🆔 الآيدي: {user_id}
-"""
-
-    photo = message.photo[-1].file_id
+🆔 الآيديInlineKeyboardMarkup photo = message.photo[-1].file_id
 
     admin_buttons = types.InlineKeyboardMarkup()
     admin_buttons.add(
