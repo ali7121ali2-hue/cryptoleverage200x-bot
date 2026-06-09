@@ -78,7 +78,7 @@ def callback(call):
 
         bot.answer_callback_query(call.id, "تم رفض الطلب")
         return
-   if call.data == "features":
+      if call.data == "features":
         text = """📊 مميزات القناة
 
 ✅ توصيات يومية احترافية
